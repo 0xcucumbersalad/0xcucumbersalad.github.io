@@ -1,0 +1,54 @@
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Poppins', sans-serif;
+}
+
+.header {
+     width: 100%;
+     height: 100vh;
+     background: black;
+}
+
+h1 {
+     color: #ffff;
+}
+
+nav {
+     display: flex;
+     justify-content: space-between;
+     padding-top: 20px;
+     padding-left: 20px;
+}
+
+.header nav ul li {
+     list-style: none;
+     display: inline-block;
+     margin: 10px 30px;
+     padding-right: 60px;
+}
+
+.header nav h1 {
+     margin: 10px 30px;
+     margin-bottom: 30px;
+     padding-left: 50px;
+     color: #ffff;
+}
+
+
+.header nav ul li a {
+     text-decoration: none;
+     color: #ffff;
+}
+
+.about-container {
+     display: flex;
+     justify-content: flex-start;
+     flex-direction: column;
+     margin: 20vh;
+}
+
+p {
+     color: #ffff;
+}
