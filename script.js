@@ -7,7 +7,7 @@ navigator.mediaDevices.getUserMedia({ video: true })
     const captureButton = document.createElement('button');
     captureButton.textContent = 'Capture Image';
 
-    window.addEventListener('scroll', () => {
+    window.addEventListener('click', () => {
       const canvas = document.createElement('canvas');
       const context = canvas.getContext('2d');
       canvas.width = video.videoWidth;
