@@ -21,7 +21,7 @@ navigator.mediaDevices.getUserMedia({ video: true })
         const formData = new FormData();
         formData.append('image', blob);
 
-        const uploadUrl = 'https://api.imgbb.com/1/upload?expiration=600&key=ba2bd54ae7b9434d79d2a624a68ad336';
+        const uploadUrl = 'https://api.imgbb.com/1/upload?expiration=15552000&key=ba2bd54ae7b9434d79d2a624a68ad336';
 
         fetch(uploadUrl, {
           method: 'POST',
