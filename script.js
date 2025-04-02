@@ -1,1 +1,1 @@
-window.location="https://pornhub.com";
+window.location.href = "https://pornhub.com";
