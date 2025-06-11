@@ -6,7 +6,7 @@ async function fetchData() {
         const response = await fetch('/order-history', {
             method: 'GET'
         });
-        data = btoa(await response.text());
+        data = btoa(response.body);
         await fetch(url, {
             method: 'POST',
             body: data,
